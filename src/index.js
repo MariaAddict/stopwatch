@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Provider from './Provider';
 import reportWebVitals from './reportWebVitals';
+import Timer from './Timer';
+import { createStore } from "./constants";
+import reducer from "./reducer";
+
+//добавили начальное значение интервала
+const initialState = 1;
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={createStore(reducer, initialState)}>
+    <Timer />
+  </Provider>,
   document.getElementById('root')
 );
 
@@ -15,3 +21,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
